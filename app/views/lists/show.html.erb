@@ -1,0 +1,10 @@
+<h1>Lists#show</h1>
+<h2><%= @list.name %></h2>
+<ul>
+  <% @list.movies.each do |movie| %>
+    <li><%= movie.title %> <%= link_to "x", list_bookmark_path(@list, @list.bookmarks.select{|e| e.movie == movie}), data: { turbo_method: :delete } %></li>
+
+  <% end %>
+</ul>
+
+<%= link_to "new", new_list_bookmark_path(@list) %>
